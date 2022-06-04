@@ -22,4 +22,52 @@ def guess(x):
     print("Spot on!")
     print(f"You did it in {numUserGuesses} tries")
     
-guess(10)
+# guess(10)
+
+def computerGuessRandom():
+    random_number = int(input("Please choose a number that is more than 1 and less than 100 for the computer to guess: "))
+
+    guess = 0
+    max_int = 100
+    count = 0
+    while guess!=random_number:
+        guess = random.randint(1,100)
+        print(f"The computer guessed {guess}")
+        count += 1
+    print(f"The computer succeded in {count} guesses")
+
+def computerGuessFaster():
+    random_number = int(input("Please choose a number that is more than 1 and less than 100 for the computer to guess: "))
+
+    guess = 0
+    max_int = 100
+    min_int = 1
+    count = 0
+    while guess!=random_number:
+        guess = random.randint(min_int,max_int)
+        print(f"The computer guessed {guess}")
+        if(guess < random_number):
+            min_int = guess
+        elif(guess > random_number):
+            max_int = guess
+        count += 1
+    print(f"The computer succeded in {count} guesses")
+
+def computerGuessBinary():
+    random_number = int(input("Please choose a number that is more than 1 and less than 100 for the computer to guess: "))
+    guess = 0
+    max_int = 100
+    min_int = 1
+    count = 0
+
+    while guess!=random_number:
+        guess = math.floor((max_int+min_int)/2)
+        print(f"The computer guessed {guess}")
+        if(random_number > guess):
+            min_int = guess
+        elif(random_number < guess):
+            max_int = guess
+        count += 1
+    print(f"The computer succeded in {count} guesses")
+
+computerGuessBinary()
